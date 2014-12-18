@@ -1,0 +1,99 @@
+<!--@subject {{var store.getFrontendName()}}: New Order # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$order.getBillingAddress().getName()":"Guest Customer Name",
+"var store.getFrontendName()":"Store Name",
+"var order.increment_id":"Order Id",
+"var order.getCreatedAtFormated('long')":"Order Created At (datetime)",
+"var order.getBillingAddress().format('html')":"Billing Address",
+"var payment_html":"Payment Details",
+"var order.getShippingAddress().format('html')":"Shipping Address",
+"var order.getShippingDescription()":"Shipping Description",
+"layout handle=\"sales_email_order_items\" order=$order":"Order Items Grid",
+"var order.getEmailCustomerNote()":"Email Order Note"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; direction:rtl; text-align:right;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px; direction:rtl; text-align:right;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        </table>
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p>
+                        <strong>{{htmlescape var=$order.getBillingAddress().getName()}} سلام</strong>،<br/>
+                        از شما برای سفارش‌تان از {{var store.getFrontendName()}} سپاس گذاریم.
+                        به محض این که بسته‌ی شما ارسال شد ما یک ایمیل حاوی یک لینک برای پیگیری سفارش‌تان خواهیم فرستاد.
+                        چناچه هر گونه سوالی درباره‌ی سفارش‌تان دارید لطفا با <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> یا با تلفن <span class="nobr">{{config path='general/store_information/phone'}}</span> از شنبه تا چهارشنبه، 8 صبح تا 5 عصر با ما تماس بگیرید.
+                    </p>
+                    <p>در زیر تاییدیه‌ی سفارش‌تان است. با سپاس دوباره از شما برای خریدتان.</p>
+
+                    <h3 style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">سفارش شماره‌ی {{var order.increment_id}} شما <small>(سفارش داده شده در {{var order.getCreatedAtFormated('long')}})</small></h3>
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em; text-align:right;">اطلاعات صورت حساب:</th>
+                            <th width="3%"></th>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em; text-align:right;">روش پرداخت:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getBillingAddress().format('html')}}
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var payment_html}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    {{depend order.getIsNotVirtual()}}
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em; text-align:right;">اطلاعات ارسال:</th>
+                            <th width="3%"></th>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em; text-align:right;">روش ارسال:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getShippingAddress().format('html')}}
+                                &nbsp;
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getShippingDescription()}}
+                                &nbsp;
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    {{/depend}}
+                    {{layout handle="sales_email_order_items" order=$order}}
+                    <br/>
+                    {{var order.getEmailCustomerNote()}}
+                    <p>با سپاس دوباره از شما،<br/><strong>{{var store.getFrontendName()}}</strong></p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

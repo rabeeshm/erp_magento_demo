@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    @author rabeesh@confianzit.biz 
+-->
+<config>
+    <modules>
+        <Confianz_DeleteHandler>
+            <version>0.0.1</version>
+        </Confianz_DeleteHandler>
+    </modules>
+    <!-- Configure our module's behavior in the global scope -->
+    <global>
+        <!-- Defining models -->
+        <models>
+            <!--
+                Unique identifier in the model's node.
+                By convention, we put the module's name in lowercase.
+            -->
+            <confianz_deletehandler>
+                <!--
+                    The path to our models directory, with directory
+                    separators replaced by underscores
+                -->
+                <class>Confianz_DeleteHandler_Model</class>
+
+            </confianz_deletehandler>
+        </models>
+        <events>
+            <!--
+                Observer event for Product delete.
+            -->
+            <catalog_product_delete_after>
+                <observers>
+                    <confianz_deletehandler>
+                        <class>confianz_deletehandler/observer</class>
+                        <method>delectProduct</method>
+                        <type>singleton</type>
+                    </confianz_deletehandler>
+                </observers>
+            </catalog_product_delete_after>
+            <!--
+                Observer event for Category delete.
+            -->
+            <catalog_category_delete_after>
+                <observers>
+                    <confianz_deletehandler>
+                        <class>confianz_deletehandler/observer</class>
+                        <method>deleteCategory</method>
+                        <type>singleton</type>
+                    </confianz_deletehandler>
+                </observers>
+            </catalog_category_delete_after>
+            <!--
+                Observer event for Customer delete.
+            -->
+            <customer_delete_after>
+                <observers>
+                    <confianz_deletehandler>
+                        <class>confianz_deletehandler/observer</class>
+                        <method>deleteCustomer</method>
+                        <type>singleton</type>
+                    </confianz_deletehandler>
+                </observers>
+            </customer_delete_after>
+        </events>
+    </global>
+</config>

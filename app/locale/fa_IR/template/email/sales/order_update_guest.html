@@ -1,0 +1,48 @@
+<!--@subject {{var store.getFrontendName()}}: Order # {{var order.increment_id}} update @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$billing.getName()":"Guest Customer Name",
+"var order.increment_id":"Order Id",
+"var order.getStatusLabel()":"Order Status",
+"var comment":"Order Comment",
+"var store.getFrontendName()":"Store Name"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; direction:rtl; text-align:right;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px; direction:rtl; text-align:right;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+        </tr>
+        </table>
+
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top">
+                <p>
+                    <strong>{{htmlescape var=$billing.getName()}} عزیز</strong>،<br/>
+                    سفارش شماره‌ی {{var order.increment_id}} شما <br/>
+                    <strong>{{var order.getStatusLabel()}}</strong> شد.
+                </p>
+                <p>{{var comment}}</p>
+                <p>
+                    چناچه هر گونه سوالی داشتید، لطفا در صورت تمایل با 
+                    <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a>
+                     یا توسط تلفن {{config path='general/store_information/phone'}} با ما تماس بگیرید.
+                </p>
+                <p>با سپاس دوباره از شما،<br/><strong>{{var store.getFrontendName()}}</strong></p>
+            </td>
+        </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

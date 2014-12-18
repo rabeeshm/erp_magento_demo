@@ -1,0 +1,71 @@
+<!--@subject Welcome, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; direction:rtl; text-align:right;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Tahoma, Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr>
+                </table>
+
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><strong>{{htmlescape var=$customer.name}} عزیز</strong>،<br/>
+                            به {{var store.getFrontendName()}} خوش آمدید. هنگام بازدید از سایت ما برای ورود تنها <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">ورود</a> یا <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;"> حساب من </a> را در بالای هر صفحه کلیک کنید، و سپس آدرس ایمیل و گذرواژه‌یتان را وارد نمایید.</p>
+
+                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; ">
+                                هنگامی که برای ورود درخواست می شود مقادیر زیر را به کار ببرید:<br/>
+                                <table cellspacing="0" cellpadding="0" border="0" style="width:auto;">
+                                	<tr>
+                                    	<td>ایمیل:</td>
+                                        <td style="direction:ltr; text-align:left; padding-right:5px;">{{var customer.email}}</td>
+                                    </tr>
+                                    <tr>
+                                    	<td>گذرواژه:</td>
+                                        <td style="direction:ltr; text-align:left; padding-right:5px;">{{htmlescape var=$customer.password}}</td>
+                                    </tr>
+                                </table>
+                                <!--E-mail: {{var customer.email}}<br/>
+                                Password: {{htmlescape var=$customer.password}}--><p>
+
+                            <p>هنگامی که شما به حساب‌تان وارد می‌شوید، قادر به انجام موارد زیر خواهید بود:</p>
+
+                            <ul>
+                                <li>ادامه دادن سریع‌تر فرایند تسویه هنگامی که خریدی انجام می‌دهید</li>
+                                <li>بررسی وضعیت سفارش‌ها</li>
+                                <li>مشاهده‌ی سفارش‌های گذشته</li>
+                                <li>ایجاد تغییرات در اطلاعات حساب‌تان</li>
+                                <li>تغییر دادن گذرواژه‌یتان</li>
+                                <li>نگهداری آدرس‌های گوناگون (برای ارسال به اعضای مختلف خانواده و دوستان!)</li>
+                            </ul>
+
+                            <p>چناچه هر گونه سوالی در ارتباط با حساب‌تان یا هر مطلب دیگری داشتید، لطفا در صورت تمایل با <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> یا توسط تلفن {{config path='general/store_information/phone'}} با ما تماس بگیرید.</p>
+                            <p>با سپاس دوباره،</p>
+
+
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+</div>

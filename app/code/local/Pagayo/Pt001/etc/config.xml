@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+
+	<modules>
+		<Pagayo_Pt001>
+			<version>0.1.1</version>
+		</Pagayo_Pt001>
+	</modules>
+	
+	 <global>
+    	<resources>
+    	    <pt001_setup>
+    	        <setup>
+    	            <module>Pagayo_Pt001</module>
+				  <class>Mage_Eav_Model_Entity_Setup</class>
+				</setup>
+				<connection>
+				  <use>default_setup</use>
+				</connection>
+    	    </pt001_setup>
+    	</resources>
+     </global>    
+     
+     <adminhtml>
+          <acl>
+             <resources>
+                 <admin>
+                     <children>
+                         <system>
+                             <children>
+                                 <config>
+                                     <children>
+                                         <pagayopt001>
+                                             <title>Theme Electronics Online</title>
+                                         </pagayopt001>
+                                     </children>
+                                 </config>
+                             </children>
+                         </system>
+                    </children>
+                </admin>
+            </resources>
+         </acl>
+     </adminhtml>
+    
+</config>

@@ -1,0 +1,20 @@
+<!-- config.xml -->
+<config>
+    <modules>
+        <Confianz_Taxes><!-- COMPANYNAME_MODULE -->
+            <version>0.0.0.1</version>
+        </Confianz_Taxes>
+    </modules>
+    <global>
+        <models>
+            <taxes><!-- MODULE, just first letter is lowercased, i.e. module CustomAPI would be placed here as customAPI -->
+                <class>Confianz_Taxes_Model</class>
+            </taxes>
+        </models>
+        <helpers>
+            <taxes>
+                <class>Confianz_Taxes_Helper</class>
+            </taxes>
+        </helpers>
+    </global>
+</config>

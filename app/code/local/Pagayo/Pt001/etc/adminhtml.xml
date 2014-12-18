@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <main translate="title" module="main">
+            <title>Pagayo</title>
+            <sort_order>1000</sort_order>
+            <children>
+                <pt001 translate="title" module="main">
+                    <title>Theme Electronics Online</title>
+                    <sort_order>100</sort_order>
+                    <action>adminhtml/system_config/edit/section/pagayopt001</action>
+                </pt001>
+            </children>
+        </main>
+    </menu>
+</config>

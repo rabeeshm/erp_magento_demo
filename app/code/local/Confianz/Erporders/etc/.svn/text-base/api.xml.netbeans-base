@@ -1,0 +1,40 @@
+<config>
+    <api>
+        <resources>                
+            <erporders_core translate="title" module="erporders">
+                <title>Order Capture API</title>
+                <model>erporders/core_api</model>
+                <acl>wineshop/erporders</acl>
+                <methods>
+                    <capture translate="title" module="erporders">
+                        <title>Get best selling product list</title>
+                        <acl>wineshop/erporders/allaccess</acl>
+                    </capture>
+                </methods>
+            </erporders_core>                               
+        </resources>
+        <resources_alias><!-- here we can put aliases, shortened calls for our api resource, I haven't checked how alias behaves when it collides with different resource... -->
+            <core>erporders_core</core>
+        </resources_alias>
+        <acl><!-- Access Control List  to our resources, this tree structure is displayed in "Resource Roles" panel when you open role to edit -->
+            <resources>
+                <wineshop translate="title" module="erporders">
+                    <title>Wineshop</title>
+                    <sort_order>100</sort_order>
+                    <erporders translate="title" module="erporders">
+                        <title>Erporders</title>
+                        <sort_order>100</sort_order>
+                        <allaccess translate="title" module="erporders">
+                            <title>Core functionality required by all users.</title>
+                            <sort_order>10</sort_order>
+                        </allaccess>
+                        <owneraccess translate="title" module="erporders">
+                            <title>Functions accessible only for owner.</title>
+                            <sort_order>50</sort_order>
+                        </owneraccess>
+                    </erporders>
+                </wineshop>
+            </resources>
+        </acl>
+    </api>
+</config>

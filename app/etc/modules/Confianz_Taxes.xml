@@ -1,0 +1,11 @@
+<config>
+    <modules>
+        <Confianz_Taxes>
+            <active>true</active>
+            <codePool>local</codePool><!-- this could be also 'local' -->
+            <depends>
+                <Mage_Api />
+            </depends>
+        </Confianz_Taxes>
+    </modules>
+</config>

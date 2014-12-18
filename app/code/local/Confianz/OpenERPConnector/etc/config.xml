@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Confianz_OpenERPConnector>
+            <version>0.0.1</version>
+            <depends>
+                <Mage_Catalog />
+                <Mage_Tag />
+            </depends>
+        </Confianz_OpenERPConnector>
+    </modules>
+    <adminhtml>
+      <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <openerpconnector translate="title">
+                                        <title>My Section </title>
+                                        <sort_order>100</sort_order>
+                                    </openerpconnector>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                 </children>
+            </admin>
+        </resources>
+    </acl>
+     </adminhtml>
+    <frontend>
+        <routers>
+            <openerpconnector>
+                <use>standard</use>
+                <args>
+                    <module>Confianz_OpenERPConnector</module>
+                    <frontName>openerpconnector</frontName>
+                </args>
+            </openerpconnector>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+
+            <openerpconnector>
+                <class>Confianz_OpenERPConnector_Model</class>
+            </openerpconnector>
+            <!--            <tag>-->
+            <!--                <rewrite>-->
+            <!--                    <api>Confianz_OpenERPConnector_Model_Tag_Api<api>-->
+            <!--                </rewrite>-->
+            <!--            </tag>-->
+        </models>
+        <resources>
+            <openerpconnector_setup>
+                <setup>
+                    <module>Confianz_OpenERPConnector</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </openerpconnector_setup>
+            <openerpconnector_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </openerpconnector_write>
+            <openerpconnector_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </openerpconnector_read>
+        </resources>
+        <blocks>
+            <openerpconnector>
+                <class>Confianz_OpenERPConnector_Block</class>
+            </openerpconnector>
+        </blocks>
+        <helpers>
+            <openerpconnector>
+                <class>Confianz_OpenERPConnector_Helper</class>
+            </openerpconnector>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <openerpconnector>
+                <use>admin</use>
+                <args>
+                    <module>Confianz_OpenERPConnector</module>
+                    <frontName>connector</frontName>
+                </args>
+            </openerpconnector>
+        </routers>
+    </admin>
+</config>

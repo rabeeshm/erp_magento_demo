@@ -1,0 +1,53 @@
+<!-- config.xml -->
+<config>
+    <modules>
+        <Confianz_Customerapi><!-- COMPANYNAME_MODULE -->
+            <version>0.0.0.1</version>
+        </Confianz_Customerapi>
+    </modules>
+    <adminhtml>
+      <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <customerapi translate="title">
+                                        <title>My Section </title>
+                                        <sort_order>100</sort_order>
+                                    </customerapi>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                 </children>
+            </admin>
+        </resources>
+    </acl>
+     </adminhtml>
+    <global>
+        <models>
+            <customerapi><!-- MODULE, just first letter is lowercased, i.e. module CustomAPI would be placed here as customAPI -->
+                <class>Confianz_Customerapi_Model</class>
+            </customerapi>
+        </models>       
+         <events>
+            <customer_save_after>
+                <observers>
+                    <confianz_customerapi_observer>
+                        <type>model</type>
+                        <class>Confianz_Customerapi_Model_Observer</class>
+                        <method>exportCustomerToErp</method>
+                    </confianz_customerapi_observer>
+                </observers>
+            </customer_save_after>
+        </events>
+        <helpers>
+            <customerapi>
+                <class>Confianz_Customerapi_Helper</class>
+            </customerapi>
+        </helpers>
+    </global>
+</config>

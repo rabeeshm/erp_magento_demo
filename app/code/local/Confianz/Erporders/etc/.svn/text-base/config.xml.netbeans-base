@@ -1,0 +1,54 @@
+<!-- config.xml -->
+<config>
+    <modules>
+        <Wineshop_Erporders><!-- COMPANYNAME_MODULE -->
+            <version>0.0.0.1</version>
+        </Wineshop_Erporders>
+    </modules>
+     <adminhtml>
+      <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <erporders translate="title">
+                                        <title>My Section </title>
+                                        <sort_order>100</sort_order>
+                                    </erporders>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                 </children>
+            </admin>
+        </resources>
+    </acl>
+     </adminhtml>
+    <global>
+        <models>
+            <erporders><!-- MODULE, just first letter is lowercased, i.e. module CustomAPI would be placed here as customAPI -->
+                <class>Wineshop_Erporders_Model</class>
+            </erporders>
+        </models>
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <Wineshop_erporders_order_observer>
+                        <type>singleton</type>
+                        <class>Wineshop_Erporders_Model_Observer</class>
+                        <method>exportOrderToErp</method>
+                    </Wineshop_erporders_order_observer>
+                </observers>
+            </sales_order_place_after>
+        </events>
+        <helpers>
+            <erporders>
+                <class>Wineshop_Erporders_Helper</class>
+            </erporders>
+        </helpers>
+    </global>
+    
+</config>

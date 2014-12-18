@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <Erporders_core translate="title" module="erporders">
+                <title>Payment Capture API</title>
+                <model>erporders_model_core_api</model>
+                <methods>
+                    <capture translate="title" module="erporders">
+                        <title>Captures a payment</title>
+                    </capture>
+                </methods>
+            </Erporders_core>
+        </resources>
+    </api>
+</config>
